@@ -1226,8 +1226,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerCamera: {fileID: 963194228}
   PlayerBody: {fileID: 1402538290}
-  Speed: 4
-  Sensitivty: 1
+  DistanceToGround: 0
+  Speed: 6
+  RunSpeed: 20
+  Sensitivty: 2
   Jumpforce: 3
 --- !u!1 &1543869977
 GameObject:
