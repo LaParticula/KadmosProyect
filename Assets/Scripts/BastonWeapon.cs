@@ -5,6 +5,7 @@ using UnityEngine;
 public class BastonWeapon : MonoBehaviour
 {
     [SerializeField] private GameObject bulletObject;
+    [SerializeField] private Transform PlayerCamera;
     private bool canShot = true;
     // Start is called before the first frame update
     void Start()
@@ -23,14 +24,18 @@ public class BastonWeapon : MonoBehaviour
                 bullet.SetActive(true);    
                 bullet.transform.localScale = new Vector3(7, 7, 7);
                 bullet.transform.position = bulletObject.transform.position;
-                Destroy(bullet, 2);
+                bullet.AddComponent<SphereCollider>();
+                Rigidbody bulletRrigidbody = bullet.AddComponent<Rigidbody>();
+            bulletRrigidbody.AddForce(PlayerCamera.forward * 1500f);
+            bulletRrigidbody.AddForce(new Vector3(0,1,0) * 500f);
+            Destroy(bullet, 10);
                 StartCoroutine(Reactivate());
             }
 
     }
 
     IEnumerator Reactivate() {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
         bulletObject.SetActive(true);
         canShot = true;
     }
