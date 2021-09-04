@@ -10,9 +10,10 @@ public class IcosPhere : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void FixedUpdate() {
+        transform.Rotate(2f, 5f, 3f);
+
     }
+    // Update is called once per frame
+  
 }
