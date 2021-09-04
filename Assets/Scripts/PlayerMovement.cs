@@ -15,9 +15,7 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private float Jumpforce;
 
     void Start() {
-        var mousePos = Input.mousePosition;
-        mousePos.x -= Screen.width / 2;
-        mousePos.y -= Screen.height / 2;
+        Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
     }
