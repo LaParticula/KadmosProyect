@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour {
     private float XRotation;
     [SerializeField] private Transform PlayerCamera;
     [SerializeField] private Rigidbody PlayerBody;
+    [SerializeField] private Animator Animator;
     [Space]
     [SerializeField] private float DistanceToGround;
     [Space]
@@ -35,15 +36,14 @@ public class PlayerMovement : MonoBehaviour {
         } else {
             Velocity = Speed;
         }
-        Vector3 MoveVector = transform.TransformDirection(PlayerMovementInput) * Velocity;
+        Vector3 MoveVector = PlayerBody.transform.TransformDirection(PlayerMovementInput) * Velocity;
         PlayerBody.velocity = new Vector3(MoveVector.x, PlayerBody.velocity.y, MoveVector.z);
 
-        Debug.DrawRay(transform.position, transform.forward, Color.green);
 
       
 
         if (Input.GetKeyDown(KeyCode.Space)) {
-            if (Physics.Raycast(transform.position, Vector3.down, DistanceToGround + 0.1f)) {
+            if (Physics.Raycast(PlayerBody.transform.position, Vector3.down, DistanceToGround + 0.1f)) {
                 PlayerBody.AddForce(Vector3.up * Jumpforce, ForceMode.Impulse);
             }
         }
@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour {
     private void MovePlayerCamera() {
         XRotation -= PlayerMouseInput.y * Sensitivty;
 
-        transform.Rotate(0f, PlayerMouseInput.x * Sensitivty, 0f);
-        PlayerCamera.transform.localRotation = Quaternion.Euler(XRotation, 0, 0);
+        PlayerBody.transform.Rotate(0f, PlayerMouseInput.x * Sensitivty, 0f);
+        PlayerCamera.transform.localRotation =  Quaternion.Euler(XRotation, 0, 0);
     }
 }
