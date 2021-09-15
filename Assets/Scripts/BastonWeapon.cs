@@ -8,8 +8,7 @@ public class BastonWeapon : MonoBehaviour
     [SerializeField] private Transform PlayerCamera;
     private bool canShot = true;
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         
     }
     private void FixedUpdate() {
@@ -26,9 +25,9 @@ public class BastonWeapon : MonoBehaviour
                 bullet.transform.position = bulletObject.transform.position;
                 bullet.AddComponent<SphereCollider>();
                 Rigidbody bulletRrigidbody = bullet.AddComponent<Rigidbody>();
-            bulletRrigidbody.AddForce(PlayerCamera.forward * 1500f);
-            bulletRrigidbody.AddForce(new Vector3(0,1,0) * 500f);
-            Destroy(bullet, 10);
+                bulletRrigidbody.AddForce(PlayerCamera.forward * 1500f);
+                bulletRrigidbody.AddForce(new Vector3(0,1,0) * 500f);
+                Destroy(bullet, 10);
                 StartCoroutine(Reactivate());
             }
 

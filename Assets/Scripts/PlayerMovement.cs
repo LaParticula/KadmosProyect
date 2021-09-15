@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour {
     void Start() {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
     }
 
     private void Update() {
@@ -26,9 +25,8 @@ public class PlayerMovement : MonoBehaviour {
         PlayerMouseInput = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         MovePlayer();
         MovePlayerCamera();
-
-
     }
+
     private void MovePlayer() {
         float Velocity;
         if (Input.GetKey(KeyCode.LeftShift)) {
